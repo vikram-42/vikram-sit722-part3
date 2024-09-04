@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  book_catalog:
+    build: ./book_catalog
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://library_db_b8kh_user:UR4gum8FTpuYr7xGARal3HPXH24C7UMf@dpg-crb64hbtq21c73cfqjn0-a.oregon-postgres.render.com/library_db_b8kh
+
+  inventory_management:
+    build: ./inventory_management
+    ports:
+      - "8001:8001"
+    environment:
+      - DATABASE_URL=postgresql://library_db_b8kh_user:UR4gum8FTpuYr7xGARal3HPXH24C7UMf@dpg-crb64hbtq21c73cfqjn0-a.oregon-postgres.render.com/library_db_b8kh
+
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: library_db_b8kh_user
+      POSTGRES_PASSWORD: UR4gum8FTpuYr7xGARal3HPXH24C7UMf
+      POSTGRES_DB: library_db_b8kh
+    ports:
+      - "5432:5432"
