@@ -1,6 +1,6 @@
-Cloud-Native DevOps Project (Part 3 of 5)
+## Cloud-Native DevOps Project (Part 3 of 5)
 
-Background
+## Background
  
 Our University Library is a cornerstone of academic resources, aims to enhance accessibility to educational materials through an advanced online platform. 
 You has been asked to develop a cloud-native microservices architecture to support the library’s diverse user base and streamline deployment processes.
@@ -20,7 +20,7 @@ storage.
 6. Apply theoretical knowledge to real-world scenarios, enhancing their
 understanding of cloud computing and DevOps principles.
 
-Tasks
+## Tasks
 
 In this task, you are continuing work from the previous project, focusing on
 Dockerizing the book_catalog and inventory_management microservices and
@@ -28,7 +28,7 @@ deploying it to Azure Managed Kubernetes. By the end of this project, you will g
 hands-on experience in setting up and managing containerized applications to
 Azure Container Registry and host them on Azure Kubernetes Service.
 
-Steps
+## Steps
 
 1. Downlaod code from the Task Resources and unzip.
 2. Create a github repository named : <your-name-sit722-part3> .
