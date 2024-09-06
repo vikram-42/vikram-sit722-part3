@@ -1,25 +1,48 @@
-version: '3.8'
-
+version: '3'
 services:
+
   book_catalog:
-    build: ./book_catalog
+    image: book_catalog
+    build: 
+      context: ./book_catalog
+      dockerfile: Dockerfile
+    container_name: book_catalog
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=postgresql://library_db_b8kh_user:UR4gum8FTpuYr7xGARal3HPXH24C7UMf@dpg-crb64hbtq21c73cfqjn0-a.oregon-postgres.render.com/library_db_b8kh
+      - PORT=8000
+      - DATABASE_URL=postgresql://library_db_b8kh_user:UR4gum8FTpuYr7xGARal3HPXH24C7UMf@db:5432/library_db_b8kh
+    restart: "no"
+    depends_on:
+      - db
 
   inventory_management:
-    build: ./inventory_management
+    image: inventory_management
+    build: 
+      context: ./inventory_management
+      dockerfile: Dockerfile
+    container_name: inventory_management
     ports:
       - "8001:8001"
     environment:
-      - DATABASE_URL=postgresql://library_db_b8kh_user:UR4gum8FTpuYr7xGARal3HPXH24C7UMf@dpg-crb64hbtq21c73cfqjn0-a.oregon-postgres.render.com/library_db_b8kh
+      - PORT=8001
+      - DATABASE_URL=postgresql://library_db_b8kh_user:UR4gum8FTpuYr7xGARal3HPXH24C7UMf@db:5432/library_db_b8kh
+    restart: "no"
+    depends_on:
+      - db
 
-  postgres:
+  db:
     image: postgres:13
+    container_name: postgres
     environment:
+      POSTGRES_DB: library_db_b8kh
       POSTGRES_USER: library_db_b8kh_user
       POSTGRES_PASSWORD: UR4gum8FTpuYr7xGARal3HPXH24C7UMf
-      POSTGRES_DB: library_db_b8kh
     ports:
       - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: "no"
+
+volumes:
+  postgres_data:

@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: book-catalog-deployment
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: book-catalog
@@ -41,7 +41,7 @@ kind: Deployment
 metadata:
   name: inventory-management-deployment
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: inventory-management
@@ -69,5 +69,5 @@ spec:
     app: inventory-management
   ports:
     - protocol: TCP
-      port: 80
+      port: 81
       targetPort: 8001
